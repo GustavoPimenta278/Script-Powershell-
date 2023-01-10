@@ -1,0 +1,4 @@
+[DisplayName]
+[Title] - [Department]
+Tel.: [PhoneNumber]
+Email: [UserPrincipalName]
