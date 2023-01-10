@@ -1,9 +1,9 @@
 <# 
 .SYNOPSIS Configurar Assinatura online do Microsoft Office 365
 .NOTES	Use por sua conta e risco!
-  Version:        1.0
+  Version:        1.2
   Author:         Erich Oliveira https://www.linkedin.com/in/oliveiraerich/
-  Editor: 		    Gustavo Alves Pimenta https://www.linkedin.com/in/gustavo-alves-pimenta-dev/
+  Editor: 	  Gustavo Alves Pimenta https://www.linkedin.com/in/gustavo-alves-pimenta-dev/
 .COMPONENT Requires Module MSOnline
 #>
 
