@@ -106,8 +106,8 @@ $user = Get-MsolUser -UserPrincipalName $CurrentUserEmail
 		$SignatureTXT = $SignatureTXT.Replace("[PhoneNumber]", $PhoneNumber)
 
 	}	else {
-		$SignatureHTML = $SignatureHTML.Replace('Tel.: [PhoneNumber]', "")
-		$SignatureTXT = $SignatureTXT.Replace('Tel.: [PhoneNumber]', "")
+		$SignatureHTML = $SignatureHTML.Replace(', Corporativo [PhoneNumber]', "")
+		$SignatureTXT = $SignatureTXT.Replace(', Corporativo [PhoneNumber]', "")
 
 	}
 
