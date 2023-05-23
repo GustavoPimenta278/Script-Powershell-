@@ -1,0 +1,24 @@
+import-module activedirectory
+
+$domain = “seu dominio”
+$DaysInactive = 75   #(alterar para a data que você deseja)
+$time = (Get-Date).Adddays(-($DaysInactive))
+
+# Pega todos os computadores do AD com o lastLogonTimestamp menor do que a data atual
+Get-ADComputer -Filter {LastLogonTimeStamp -lt $time} -Properties LastLogonTimeStamp |
+
+# Mostra o hostname e o lastLogonTimestamp em um arquivo CSV para o Excel
+select-object Name,@{Name ="Nome computadores"; Expression={[DateTime]::FromFileTime($_.lastLogonTimestamp)}} | export-csv c:\MaquinasInativasDominio.csv –notypeinformation
+
+
+
+### Excluindo as maquinas ### 
+# Pega todos os computadores do AD com o lastLogonTimestamp menor do que a data atual
+$maquinas = Get-ADComputer -Filter {LastLogonTimeStamp -lt $time} -Properties LastLogonTimeStamp
+
+
+ForEach ($quipamento in $maquinas) {
+  Remove-ADComputer -Identity $equipamento -Confirm:$False
+  Write-Host "O equipamento $equipamento foi removido do AD" -ForegroundColor Green
+
+}
