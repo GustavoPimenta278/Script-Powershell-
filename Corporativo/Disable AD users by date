@@ -1,0 +1,13 @@
+$domain = “seu dominio”
+$DaysInactive = 60   #(alterar para a data que você deseja)
+$time = (Get-Date).Adddays(-($DaysInactive))
+
+# Pega todos os usuarios do AD que não se conectaram a mais tempo do que informado em $DaysInactive
+$ContasBloquear = Get-ADUser -Filter {LastLogonTimeStamp -lt $time} -Properties LastLogonTimeStamp 
+
+
+#Bloqueia as contas
+ForEach ($usuario in $contasBloquear) {
+  Disable-ADAccount -Identity $usuario -Confirm:$False
+  Write-Host "O usuario $usuario foi desabilitado no AD" -ForegroundColor Green
+}
